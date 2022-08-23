@@ -1,16 +1,13 @@
 import * as api from '../api';
 
 //Action creators
-const getPosts = () => async (dispatch) => {
-    //1:01:47
+export const getPosts = () => async (dispatch) => {
     try {
+        const { data } = await api.fetchPosts();
 
+        //because async dispatch we 'dispatch action' instead of 'return action'
+        dispatch({type: 'FETCH_ALL', payload: data});
     } catch(error) {
-
+        console.log(error.message);
     }
-
-    const action = {type: 'FETCH_ALL', payload: [] }
-    
-    //because async dispatch we 'dispatch action' instead of 'return action'
-    dispatch(action);
 }

@@ -7,11 +7,11 @@ import postsRoutes from './routes/posts.js'
 
 const app = express();
 
-app.use('/posts', postsRoutes);
-
 app.use(bodyParser.json({ limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
+
+app.use('/posts', postsRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://mongo:mongo@cluster0.ffkdsas.mongodb.net/?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5001;
