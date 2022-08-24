@@ -29,4 +29,19 @@ export const createPosts = async (req, res) => {
     }
 }
 
+
+export const updatePost = async (req, res) => {
+    //destructure and rename id variable to match mongoose
+    const { id: _id } =req.params;
+    const post = req.body
+
+    //Checks if the _id is a mongoose id
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No post with that id');
+
+    // new: true allows us to receive updated version of post (?)
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, { new: true });
+
+    res.json(updatedPost);
+}
+
 export default router;
