@@ -39,9 +39,21 @@ export const updatePost = async (req, res) => {
     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No post with that id');
 
     // new: true allows us to receive updated version of post (?)
-    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, { new: true });
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, {...post, _id}, { new: true });
 
     res.json(updatedPost);
+}
+
+export const deletePost = async (req, res) => {
+    //destructure id and set to req.params
+    const { id } = req.params;
+
+    //Checks if the _id is a mongoose id
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No post with that id');
+
+    await PostMessage.findByIdAndRemove(id);
+
+    res.json({ message: 'Post deleted successfully' });
 }
 
 export default router;
