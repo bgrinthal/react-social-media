@@ -40,7 +40,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     name="creator" 
                     varient="outlined" 
                     label="Creator" 
-                    fullWidth
+                    fullwidth
                     value={postData.creator}
                     onChange={(e) => setPostData({...postData, creator: e.target.value })}
                 />
@@ -48,7 +48,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     name="title" 
                     varient="outlined" 
                     label="Title" 
-                    fullWidth
+                    fullwidth
                     value={postData.title}
                     onChange={(e) => setPostData({...postData, title: e.target.value })}
                 />
@@ -56,7 +56,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     name="message" 
                     varient="outlined" 
                     label="Message" 
-                    fullWidth
+                    fullwidth
                     value={postData.message}
                     onChange={(e) => setPostData({...postData, message: e.target.value })}
                 />
@@ -64,7 +64,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     name="tags" 
                     varient="outlined" 
                     label="Tags" 
-                    fullWidth
+                    fullwidth
                     value={postData.tags}
                     onChange={(e) => setPostData({...postData, tags: e.target.value.split(',') })}
                 />
@@ -75,8 +75,8 @@ const Form = ({ currentId, setCurrentId }) => {
                         onDone={({base64})=>setPostData({ ...postData, selectedFile: base64})}
                     />
                 </div>
-                <Button className={classes.buttonSubmit.submit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-                <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+                <Button className={classes.buttonSubmit.submit} variant="contained" color="primary" size="large" type="submit" fullwidth>Submit</Button>
+                <Button variant="contained" color="secondary" size="small" onClick={clear} fullwidth>Clear</Button>
             </form>
        </Paper>
     );
